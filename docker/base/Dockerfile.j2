@@ -58,6 +58,13 @@ COPY epel.repo /etc/yum.repos.d/epel.repo
 COPY RPM-GPG-KEY-MariaDB /etc/yum.repos.d/RPM-GPG-KEY-MariaDB
 COPY RPM-GPG-KEY-CentOS-7 /etc/yum.repos.d/RPM-GPG-KEY-CentOS-7
 
+# install base utils
+RUN yum install -y vim 
+RUN yum install -y screen
+RUN yum install -y htop 
+RUN yum install -y sl
+RUN yum install -y w3m 
+
 {{ macros.install_packages(base_yum_url_packages | customizable("yum_url_packages")) }}
 {% set base_yum_repo_keys = [
     '/etc/yum.repos.d/RPM-GPG-KEY-MariaDB',
