@@ -30,9 +30,15 @@ MAINTAINER {{ maintainer }}
 {% endif %}
 
 {{ macros.install_packages(mariadb_packages | customizable("packages")) }}
+
 COPY mariadb_sudoers /etc/sudoers.d/kolla_mariadb_sudoers
+COPY xinetd_sudoers /etc/sudoers.d/kolla_xinetd_sudoers
+
 COPY extend_start.sh /usr/local/bin/kolla_extend_start
 COPY security_reset.expect /usr/local/bin/kolla_security_reset
+COPY galera_check /etc/xinetd.d/galera_check
+COPY xinetd /etc/init.d/xinetd
+
 RUN chmod 755 /usr/local/bin/kolla_extend_start \
     && chmod 755 /usr/local/bin/kolla_security_reset \
     && chmod 750 /etc/sudoers.d \
