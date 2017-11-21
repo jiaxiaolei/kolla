@@ -1,0 +1,7 @@
+Cmnd_Alias START_XINETD = /sbin/service xinetd start
+Cmnd_Alias STOP_XINETD = /sbin/service xinetd stop
+
+Cmnd_Alias SCTL_START_XINETD = /bin/systemctl start xinetd.service
+Cmnd_Alias SCTL_STOP_XINETD = /bin/systemctl stop xinetd.service
+
+%kolla ALL=(root) NOPASSWD: START_XINETD,STOP_XINETD,SCTL_START_XINETD,SCTL_STOP_XINETD
