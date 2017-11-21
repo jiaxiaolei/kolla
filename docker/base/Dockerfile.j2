@@ -61,9 +61,11 @@ COPY RPM-GPG-KEY-CentOS-7 /etc/yum.repos.d/RPM-GPG-KEY-CentOS-7
 # install base utils
 RUN yum install -y vim 
 RUN yum install -y screen
+# include ifconfig
+RUN yum install -y net-tools 
 RUN yum install -y htop 
-RUN yum install -y sl
 RUN yum install -y w3m 
+RUN yum install -y sl
 
 {{ macros.install_packages(base_yum_url_packages | customizable("yum_url_packages")) }}
 {% set base_yum_repo_keys = [
