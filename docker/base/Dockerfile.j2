@@ -1,4 +1,5 @@
-FROM {{ base_image }}:{{ base_distro_tag }}
+# FROM {{ base_image }}:{{ base_distro_tag }}
+FROM 10.253.66.40:4000/centos_new_2:latest
 MAINTAINER {{ maintainer }}
 
 {# NOTE(SamYaple): Avoid uid/gid conflicts by creating each user/group up front. #}
